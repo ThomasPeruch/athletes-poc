@@ -1,6 +1,10 @@
 package com.tproject.athletespoc.model;
 
+import javax.persistence.Entity;
+
+
 public class Athlete {
+
 	private Integer id;
 	private String name;
 	private String nickname;

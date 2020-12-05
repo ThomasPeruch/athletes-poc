@@ -1,4 +1,10 @@
 package com.tproject.athletespoc.repository;
 
-public class NationalityRepository {
+import com.tproject.athletespoc.model.Nationality;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface NationalityRepository extends CrudRepository<Nationality, Integer> {
+
 }
