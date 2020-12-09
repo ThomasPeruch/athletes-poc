@@ -1,28 +1,38 @@
 package com.tproject.athletespoc.endpoint;
 
-import com.tproject.athletespoc.model.Nationality;
-import com.tproject.athletespoc.service.NationalityService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.tproject.athletespoc.model.Nationality;
+import com.tproject.athletespoc.service.NationalityService;
+
 @RestController
+@RequestMapping("/nationality")
 public class NationalityController {
 
 	@Autowired
 	private NationalityService nationalityService;
 
-	@GetMapping("/nationality")
+	@GetMapping
 	public List<Nationality> getNationalities() {
-		return nationalityService.getNationalities();
+		return nationalityService.findAll();
 	}
 
-	@PostMapping("/nationality")
-	public Nationality insertNationality(@RequestBody Nationality nationality){
+	@PostMapping
+	public Nationality insert(@RequestBody Nationality nationality){
 		return nationalityService.insert(nationality);
+	}
+
+	@DeleteMapping(value="/{id}")
+	public Nationality delete(@PathVariable Integer id) {
+		return nationalityService.delete(id);
 	}
 }

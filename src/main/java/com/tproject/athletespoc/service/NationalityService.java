@@ -1,14 +1,15 @@
 package com.tproject.athletespoc.service;
 
-import com.tproject.athletespoc.model.Nationality;
-import com.tproject.athletespoc.repository.NationalityRepository;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.tproject.athletespoc.model.Nationality;
+import com.tproject.athletespoc.repository.NationalityRepository;
 
 @Service
 public class NationalityService {
@@ -16,13 +17,21 @@ public class NationalityService {
 	@Autowired
 	private NationalityRepository nationalityRepository;
 
-	public List<Nationality> getNationalities() {
+	public List<Nationality> findAll() {
 		List <Nationality> list = new ArrayList<>();
 		list = (List<Nationality>) nationalityRepository.findAll();
 		return list;
 	}
 
+	@Transactional
 	public Nationality insert(Nationality nationality) {
 		return nationalityRepository.save(nationality);
+	}
+	
+	@Transactional
+	public Nationality delete(Integer id) {
+		Nationality nat = nationalityRepository.getOne(id);
+		nationalityRepository.deleteById(id);
+		return nat;
 	}
 }
