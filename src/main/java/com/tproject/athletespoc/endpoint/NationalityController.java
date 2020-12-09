@@ -18,7 +18,7 @@ public class NationalityController {
 
 	@GetMapping("/nationality")
 	public List<Nationality> getNationalities() {
-		return nationalityService.getNationalitiesMock();
+		return nationalityService.getNationalities();
 	}
 
 	@PostMapping("/nationality")

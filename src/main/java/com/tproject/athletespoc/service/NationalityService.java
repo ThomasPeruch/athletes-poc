@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +16,10 @@ public class NationalityService {
 	@Autowired
 	private NationalityRepository nationalityRepository;
 
-	public List<Nationality> getNationalitiesMock() {
-		return Arrays.asList(new Nationality(1, "Portugal"),
-				new Nationality(2, "Australia"),
-				new Nationality(3, "Brazil"));
+	public List<Nationality> getNationalities() {
+		List <Nationality> list = new ArrayList<>();
+		list = (List<Nationality>) nationalityRepository.findAll();
+		return list;
 	}
 
 	public Nationality insert(Nationality nationality) {
