@@ -29,9 +29,7 @@ public class NationalityService {
 	}
 	
 	@Transactional
-	public Nationality delete(Integer id) {
-		Nationality nat = nationalityRepository.getOne(id);
+	public void delete(Integer id) {
 		nationalityRepository.deleteById(id);
-		return nat;
 	}
 }

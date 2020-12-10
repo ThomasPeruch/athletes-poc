@@ -32,7 +32,7 @@ public class NationalityController {
 	}
 
 	@DeleteMapping(value="/{id}")
-	public Nationality delete(@PathVariable Integer id) {
-		return nationalityService.delete(id);
+	public void delete(@PathVariable Integer id) {
+		nationalityService.delete(id);
 	}
 }
