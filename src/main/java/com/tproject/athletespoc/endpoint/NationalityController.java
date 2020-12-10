@@ -3,6 +3,7 @@ package com.tproject.athletespoc.endpoint;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +24,9 @@ public class NationalityController {
 	private NationalityService nationalityService;
 
 	@GetMapping
-	public List<Nationality> getNationalities() {
-		return nationalityService.findAll();
+	public ResponseEntity<List<Nationality>> getNationalities() {
+		List<Nationality>list = nationalityService.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")

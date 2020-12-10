@@ -43,7 +43,6 @@ public class NationalityService {
 		entity.setCountry(nationalityRequest.getCountry());
 		entity=nationalityRepository.save(entity);
 		return entity;
-		
 	}
 	
 	@Transactional
