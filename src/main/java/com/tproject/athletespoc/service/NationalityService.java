@@ -17,6 +17,7 @@ public class NationalityService {
 	@Autowired
 	private NationalityRepository nationalityRepository;
 
+	@Transactional
 	public List<Nationality> findAll() {
 		List <Nationality> list = new ArrayList<>();
 		list = (List<Nationality>) nationalityRepository.findAll();
@@ -26,6 +27,15 @@ public class NationalityService {
 	@Transactional
 	public Nationality insert(Nationality nationality) {
 		return nationalityRepository.save(nationality);
+	}
+	
+	@Transactional
+	public Nationality update(Integer id, Nationality nationalityRequest) {
+		Nationality entity = nationalityRepository.getOne(id);
+		entity.setCountry(nationalityRequest.getCountry());
+		entity=nationalityRepository.save(entity);
+		return entity;
+		
 	}
 	
 	@Transactional
