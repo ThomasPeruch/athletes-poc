@@ -26,6 +26,11 @@ public class NationalityController {
 	public List<Nationality> getNationalities() {
 		return nationalityService.findAll();
 	}
+	
+	@GetMapping(value="/{id}")
+	public Nationality getNationalityById(@PathVariable Integer id) {
+		return nationalityService.findById(id);
+	}
 
 	@PostMapping
 	public Nationality insert(@RequestBody Nationality nationality){

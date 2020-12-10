@@ -2,6 +2,7 @@ package com.tproject.athletespoc.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -23,6 +24,13 @@ public class NationalityService {
 		list = (List<Nationality>) nationalityRepository.findAll();
 		return list;
 	}
+	
+	@Transactional
+	public Nationality findById(Integer id) {
+		 Optional<Nationality>opt = nationalityRepository.findById(id);
+		 Nationality entity = opt.get();
+		 return entity;
+	}
 
 	@Transactional
 	public Nationality insert(Nationality nationality) {
@@ -42,4 +50,5 @@ public class NationalityService {
 	public void delete(Integer id) {
 		nationalityRepository.deleteById(id);
 	}
+	
 }
